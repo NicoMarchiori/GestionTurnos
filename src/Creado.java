@@ -18,6 +18,6 @@ public class Creado extends Estado{
 
     @Override
     public String toString() {
-        return "Creado";
+        return "Disponible";
     }
 }
