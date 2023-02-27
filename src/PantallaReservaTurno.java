@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PantallaReservaTurno {
@@ -12,12 +13,16 @@ public class PantallaReservaTurno {
 
     //Metodos
 
-    public void mostrarTurno(Turno turno){
+    public void mostrarTurno(Turno turno) {
         System.out.println(turno);
     }
 
-    public int seleccionarTurno(){
-        System.out.println("Seleccione un turno");
-        return sc.nextInt();
+    public int seleccionarTurno(ArrayList<Turno> arrayTurnos) {
+        int valor = sc.nextInt();
+        while ((valor > arrayTurnos.size()) || (valor < 0)) {
+            System.out.println("El turno ingresado no existe...");
+            valor = sc.nextInt();
+        }
+        return valor;
     }
 }

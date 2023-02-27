@@ -3,7 +3,7 @@ import java.time.format.*;
 
 public class Turno {
     //atributos
-    private final LocalDate FECHAACTUAL = LocalDate.now();
+    private LocalDate fechaActual = LocalDate.now();
     LocalTime horaDesde;
     LocalTime horaHasta;
     int id;
@@ -67,7 +67,7 @@ public class Turno {
     @Override
     public String toString() {
         return "Turno " + id +
-                " | FECHAACTUAL:" + FECHAACTUAL +
+                " | FECHAACTUAL:" + fechaActual +
                 " | horaDesde:" + horaDesde +
                 " | horaHasta:" + horaHasta +
                 " | estado: " + estado;

@@ -24,7 +24,7 @@ public class ControladorReservaTurno {
 
     public void nuevaReservaTurno(GeneradorTurnos generadorTurnos){
         obtenerTurnosCreados(generadorTurnos.arrayTurnos);
-        setTurnoSeleccionado(generadorTurnos.arrayTurnos.get(pantalla.seleccionarTurno() - 1));
+        setTurnoSeleccionado(generadorTurnos.arrayTurnos.get(pantalla.seleccionarTurno(generadorTurnos.getArrayTurnos()) - 1));
         turnoSeleccionado.reservarTurno(turnoSeleccionado);
         obtenerTurnosCreados(generadorTurnos.arrayTurnos);
         pantalla.mostrarTurno(turnoSeleccionado);
