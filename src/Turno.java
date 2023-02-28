@@ -3,11 +3,12 @@ import java.time.format.*;
 
 public class Turno {
     //atributos
-    private LocalDate fechaActual = LocalDate.now();
+    LocalDate fecha;
     LocalTime horaDesde;
     LocalTime horaHasta;
     int id;
     Estado estado;
+    DateTimeFormatter formatter;
 
      // Constructores
 
@@ -15,11 +16,13 @@ public class Turno {
     public Turno() {
     }
 
-    public Turno(LocalTime horaDesde, LocalTime horaHasta, int id) {
+    public Turno(LocalDate fecha,LocalTime horaDesde, LocalTime horaHasta, int id, DateTimeFormatter formatter) {
+        this.fecha = fecha;
         this.horaDesde = horaDesde;
         this.horaHasta = horaHasta;
         this.estado = new Creado(true);
         this.id = id;
+        this.formatter = formatter;
     }
 
     // metodos
@@ -67,7 +70,7 @@ public class Turno {
     @Override
     public String toString() {
         return "Turno " + id +
-                " | FECHAACTUAL:" + fechaActual +
+                " | fecha:" + formatter.format(fecha).toString() +
                 " | horaDesde:" + horaDesde +
                 " | horaHasta:" + horaHasta +
                 " | estado: " + estado;
