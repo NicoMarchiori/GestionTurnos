@@ -9,7 +9,9 @@ public class Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         GeneradorTurnos generadorTurnos = new GeneradorTurnos();
         PantallaGeneracionTurnos pantallaGeneracionTurnos = new PantallaGeneracionTurnos(sc);
+        ControladorGeneradorTurno ctrlGeneradorTurno = new ControladorGeneradorTurno(generadorTurnos, formatter);
         PantallaReservaTurno pantallaReservaTurno = new PantallaReservaTurno(sc);
+        ControladorReservaTurno ctrlReservaTurno = new ControladorReservaTurno();
         boolean salir = false;
         int opcion;
 
@@ -29,8 +31,7 @@ public class Main {
                 switch (opcion) {
                     case 1:
                         System.out.println("Has seleccionado la opcion reservar Turno");
-                        ControladorReservaTurno ctrlReservaTurno = new ControladorReservaTurno(pantallaReservaTurno);
-                        ctrlReservaTurno.nuevaReservaTurno(generadorTurnos);
+                        ctrlReservaTurno.nuevaReservaTurno(generadorTurnos, pantallaReservaTurno);
                         break;
                     case 2:
                         System.out.println("Has seleccionado la opcion 2");
@@ -40,8 +41,7 @@ public class Main {
                         break;
                     case 4:
                         System.out.println("Has seleccionado la opcion 4");
-                        ControladorGeneradorTurno ctrlGeneradorTurno = new ControladorGeneradorTurno(pantallaGeneracionTurnos, generadorTurnos, formatter);
-                        ctrlGeneradorTurno.generarTurnos();
+                        pantallaGeneracionTurnos.mostrarMenu(ctrlGeneradorTurno, pantallaGeneracionTurnos);
                         break;
                     case 5:
                         salir = true;

@@ -4,12 +4,10 @@ import java.util.ArrayList;
 public class ControladorReservaTurno {
     // Atributos
     Turno turnoSeleccionado;
-    PantallaReservaTurno pantalla;
 
     // Constructor
 
-    public ControladorReservaTurno(PantallaReservaTurno pantalla) {
-        this.pantalla = pantalla;
+    public ControladorReservaTurno() {
     }
 
     // metodos
@@ -23,11 +21,11 @@ public class ControladorReservaTurno {
         this.turnoSeleccionado = turnoSeleccionado;
     }
 
-    public void nuevaReservaTurno(GeneradorTurnos generadorTurnos){
+    public void nuevaReservaTurno(GeneradorTurnos generadorTurnos, PantallaReservaTurno pantalla){
         if (esArrayNulo(generadorTurnos.arrayTurnos)){
             System.out.println("No hay turnos para reservar.");
         }else {
-            obtenerTurnosCreados(generadorTurnos.arrayTurnos);
+            obtenerTurnosCreados(generadorTurnos.arrayTurnos, pantalla);
             System.out.println("\nSeleccione un turno: ");
             setTurnoSeleccionado(generadorTurnos.arrayTurnos.get(pantalla.seleccionarTurno(generadorTurnos.getArrayTurnos()) - 1));
             turnoSeleccionado.reservarTurno(turnoSeleccionado);
@@ -37,7 +35,7 @@ public class ControladorReservaTurno {
         }
     }
 
-    public void obtenerTurnosCreados(ArrayList<Turno> arrayTurnos){
+    public void obtenerTurnosCreados(ArrayList<Turno> arrayTurnos, PantallaReservaTurno pantalla){
         for(Turno turno : arrayTurnos){
             if(turno.estoyDisponible()){
                 pantalla.mostrarTurno(turno);
